@@ -11,12 +11,12 @@ $(document).ready(function(){
 	$('#send-form').submit(function(event){
 
 		socket.emit('check-id', socket.id);
-		var formData = new FormData($(this)[0]);   //$('#send-form')[0]
+		var formData = new FormData($(this)[0]);  
 		
 		$.ajax({
 				type: "POST",
 	            enctype: 'multipart/form-data',
-	            url: '/',						//url: 'http://192.168.0.14:3000' muestra error ajax status 0, solucion aplicar CORS(Cross-Origin Resource Sharing) 
+	            url: '/',						
 	            data: formData,
 	            processData: false,
 	            contentType: false,
@@ -34,7 +34,6 @@ $(document).ready(function(){
 	});
 
 	socket.on('progress', function(percent){
-		//$('#miProgress').append($('<ul></ul>').html('<li>' + percent + '</li>'));
 		$('#myBar').width(percent + '%');
 		if(percent >= 100){	
 		  alert('upload completed');
